@@ -1,5 +1,4 @@
 ﻿using Archie.Datos;
-using Archie.Entidades;
 
 namespace Archie.Consola
 {
@@ -8,19 +7,17 @@ namespace Archie.Consola
         static void Main(string[] args)
         {
             Nomina nomina = new Nomina();
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("***********************************");
-            Console.WriteLine("* Bethany's Pie Shop Employee App *");
-            Console.WriteLine("***********************************");
-            Console.ForegroundColor = ConsoleColor.White;
-
             string userSelection;
-            Console.ForegroundColor = ConsoleColor.Blue;
-
-
             do
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("***********************************");
+                Console.WriteLine("* Bethany's Pie Shop Employee App *");
+                Console.WriteLine("***********************************");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"Cargados {nomina.GetCantidad()} empleado(s)\n\n");
 
@@ -30,9 +27,10 @@ namespace Archie.Consola
                 Console.WriteLine("*************************");
 
                 Console.WriteLine("1: Registrar empleado");
-                Console.WriteLine("2: Ver todos");
-                Console.WriteLine("3: Guardar");
-                Console.WriteLine("4: Cargar datos de un empleado");
+                Console.WriteLine("2: Ver todos (Tarjetas");
+                Console.WriteLine("3: Ver todos (Listado)");
+                Console.WriteLine("4: Guardar Empleados");
+                Console.WriteLine("5: Cargar datos de un empleado");
                 Console.WriteLine("9: Salir de la aplicación");
                 Console.Write("Tu selección: ");
 
@@ -47,12 +45,15 @@ namespace Archie.Consola
                         Utilidades.MostrarEmpleados(nomina);
                         break;
                     case "3":
-                        //Utilidades.GuardarEmpleado(nomina);
+                        Utilidades.MostrarListaEmpleados(nomina);
                         break;
                     case "4":
-                        //Utilidades.CargarDatosEmpleado(nomina);
+                        Utilidades.GuardarEmpleados(nomina);
                         break;
                     case "5":
+                        Utilidades.CargarDatosEmpleado(nomina);
+                        break;
+                    case "6":
                         //Utilities.LoadEmployeeById(empleados);
                         break;
                     case "9": break;

@@ -4,6 +4,7 @@ namespace Archie.Entidades
 {
     public class Empleado
     {
+        
         public int DNI { get; set; }
         public string PrimerNombre { get; set; }
         public string? SegundoNombre { get; set; }
@@ -11,10 +12,13 @@ namespace Archie.Entidades
         public string Apellidos { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public Seccion Seccion { get; set; }
-        public int Edad { get; private set; }
+        public Sexo Sexo { get; set; }
+        //public int Edad { get; private set; }
+        public int Edad { get { return SetEdad(); } }
         #region Constructores
         public Empleado(int dni, string primerNombre, string apellidos,
-            DateTime fechaNacimiento, Seccion seccion, 
+            DateTime fechaNacimiento, Seccion seccion,
+            Sexo sexo,
             string? segundoNombre = null, string? tercerNombre=null)
         {
             DNI = dni;
@@ -24,11 +28,12 @@ namespace Archie.Entidades
             Apellidos = apellidos;
             FechaNacimiento = fechaNacimiento;
             Seccion = seccion;
-            Edad = SetEdad();
+            Sexo= sexo;
+            //Edad = SetEdad();
         }
         public Empleado()
         {
-            
+            //Edad = SetEdad();
         }
         #endregion
         private int SetEdad()
@@ -39,19 +44,18 @@ namespace Archie.Entidades
 
         public string NombreCompleto()
         {
-            if(TercerNombre!=null && TercerNombre != string.Empty)
+            StringBuilder sb=new StringBuilder();
+            sb.Append($"{Apellidos.ToUpper()}, {PrimerNombre}");
+
+            if (TercerNombre != null && TercerNombre != string.Empty)
             {
-                if(SegundoNombre!=null && SegundoNombre != string.Empty)
-                {
-                    return @$"{Apellidos.ToUpper()}, {PrimerNombre} {SegundoNombre} {TercerNombre[0].ToString().ToUpper()}.";
-                }
-            }
-            
-            if (SegundoNombre != null && SegundoNombre != string.Empty)
+                sb.Append($" {SegundoNombre} {TercerNombre[0].ToString().ToUpper()}.");
+               
+            }else if(SegundoNombre != null && SegundoNombre != string.Empty)
             {
-                return @$"{Apellidos.ToUpper()}, {PrimerNombre} {SegundoNombre[0].ToString().ToUpper()}.";
+                sb.Append($" {SegundoNombre[0].ToString().ToUpper()}.");
             }
-            return @$"{Apellidos.ToUpper()}, {PrimerNombre}";
+            return sb.ToString();
         }
 
         public static string MostrarDatos(Empleado empleado)
@@ -62,6 +66,7 @@ namespace Archie.Entidades
             sb.AppendLine($"Fecha Nacimiento:{empleado.FechaNacimiento.ToShortDateString()}");
             sb.AppendLine($"Edad: {empleado.Edad} años");
             sb.AppendLine($"Sección:{empleado.Seccion.ToString()}");
+            sb.AppendLine($"Sexo: {empleado.Sexo.ToString()}");
             return sb.ToString();
         }
 
@@ -84,7 +89,8 @@ namespace Archie.Entidades
 
         public static bool Validar(Empleado empleado)
         {
-            if (empleado.DNI <= 0)
+            
+            if (!ValidarDni(empleado.DNI))
             {
                 return false;
             }
@@ -104,6 +110,20 @@ namespace Archie.Entidades
                 return false;
             }
             return true;
+        }
+
+        private static bool ValidarDni(int DNI)
+        {
+            bool esValido = true;
+            if (DNI <= 0)
+            {
+                esValido = false;
+            }
+            else if (DNI.ToString().Length != 8)
+            {
+                esValido = false;
+            }
+            return esValido;
         }
     }
 }
