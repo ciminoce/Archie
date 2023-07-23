@@ -8,7 +8,7 @@ namespace Archie.Datos
         private List<Empleado> _listaEmpleados;
         private static bool hayCambios;
 
-        private string nombreArchivoSecuencial = "Personas.txt";
+        private readonly string nombreArchivoSecuencial = "Personas.txt";
 
         static Nomina()
         {
