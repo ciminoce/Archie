@@ -28,82 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            dtpFechaNacimiento = new DateTimePicker();
-            label3 = new Label();
-            cboSecciones = new ComboBox();
-            groupBox1 = new GroupBox();
-            rbtMasculino = new RadioButton();
-            rbtFemenino = new RadioButton();
-            btnOK = new Button();
+            components = new System.ComponentModel.Container();
+            gbEmpleado = new GroupBox();
+            txtApellidos = new TextBox();
+            txtTercerNombre = new TextBox();
+            txtSegundoNombre = new TextBox();
+            txtPrimerNombre = new TextBox();
             btnCancelar = new Button();
-            groupBox1.SuspendLayout();
+            btnOK = new Button();
+            gbSexo = new GroupBox();
+            rbtFemenino = new RadioButton();
+            rbtMasculino = new RadioButton();
+            cboSecciones = new ComboBox();
+            label3 = new Label();
+            dtpFechaNacimiento = new DateTimePicker();
+            label2 = new Label();
+            label1 = new Label();
+            mtbDni = new MaskedTextBox();
+            errorProvider1 = new ErrorProvider(components);
+            gbEmpleado.SuspendLayout();
+            gbSexo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // gbEmpleado
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(42, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(30, 15);
-            label1.TabIndex = 0;
-            label1.Text = "DNI:";
+            gbEmpleado.Controls.Add(txtApellidos);
+            gbEmpleado.Controls.Add(txtTercerNombre);
+            gbEmpleado.Controls.Add(txtSegundoNombre);
+            gbEmpleado.Controls.Add(txtPrimerNombre);
+            gbEmpleado.Location = new Point(32, 55);
+            gbEmpleado.Name = "gbEmpleado";
+            gbEmpleado.Size = new Size(464, 150);
+            gbEmpleado.TabIndex = 19;
+            gbEmpleado.TabStop = false;
+            gbEmpleado.Text = " Nombres y Apellido";
             // 
-            // textBox1
+            // txtApellidos
             // 
-            textBox1.Location = new Point(78, 37);
-            textBox1.MaxLength = 8;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(154, 23);
-            textBox1.TabIndex = 1;
+            txtApellidos.Location = new Point(15, 112);
+            txtApellidos.Name = "txtApellidos";
+            txtApellidos.PlaceholderText = "Ingrese los apellidos";
+            txtApellidos.Size = new Size(428, 23);
+            txtApellidos.TabIndex = 0;
             // 
-            // label2
+            // txtTercerNombre
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(54, 194);
-            label2.Name = "label2";
-            label2.Size = new Size(106, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Fecha Nacimiento:";
+            txtTercerNombre.Location = new Point(15, 84);
+            txtTercerNombre.Name = "txtTercerNombre";
+            txtTercerNombre.PlaceholderText = "Ingrese el tercer  nombre";
+            txtTercerNombre.Size = new Size(428, 23);
+            txtTercerNombre.TabIndex = 0;
             // 
-            // dtpFechaNacimiento
+            // txtSegundoNombre
             // 
-            dtpFechaNacimiento.Format = DateTimePickerFormat.Short;
-            dtpFechaNacimiento.Location = new Point(178, 191);
-            dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new Size(104, 23);
-            dtpFechaNacimiento.TabIndex = 3;
+            txtSegundoNombre.Location = new Point(15, 55);
+            txtSegundoNombre.Name = "txtSegundoNombre";
+            txtSegundoNombre.PlaceholderText = "Ingrese el segundo  nombre";
+            txtSegundoNombre.Size = new Size(428, 23);
+            txtSegundoNombre.TabIndex = 0;
             // 
-            // label3
+            // txtPrimerNombre
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(59, 246);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Secciones:";
+            txtPrimerNombre.Location = new Point(15, 26);
+            txtPrimerNombre.Name = "txtPrimerNombre";
+            txtPrimerNombre.PlaceholderText = "Ingrese el primer nombre";
+            txtPrimerNombre.Size = new Size(428, 23);
+            txtPrimerNombre.TabIndex = 0;
             // 
-            // cboSecciones
+            // btnCancelar
             // 
-            cboSecciones.FormattingEnabled = true;
-            cboSecciones.Items.AddRange(new object[] { "Compras", "Ventas", "RRHH", "Computos", "Seguridad" });
-            cboSecciones.Location = new Point(178, 243);
-            cboSecciones.Name = "cboSecciones";
-            cboSecciones.Size = new Size(121, 23);
-            cboSecciones.TabIndex = 5;
+            btnCancelar.Location = new Point(605, 261);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(94, 69);
+            btnCancelar.TabIndex = 16;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // groupBox1
+            // btnOK
             // 
-            groupBox1.Controls.Add(rbtFemenino);
-            groupBox1.Controls.Add(rbtMasculino);
-            groupBox1.Location = new Point(512, 44);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(200, 100);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = " Sexo ";
+            btnOK.Location = new Point(53, 261);
+            btnOK.Name = "btnOK";
+            btnOK.Size = new Size(94, 69);
+            btnOK.TabIndex = 17;
+            btnOK.Text = "OK";
+            btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
+            // 
+            // gbSexo
+            // 
+            gbSexo.Controls.Add(rbtFemenino);
+            gbSexo.Controls.Add(rbtMasculino);
+            gbSexo.Location = new Point(519, 55);
+            gbSexo.Name = "gbSexo";
+            gbSexo.Size = new Size(228, 84);
+            gbSexo.TabIndex = 15;
+            gbSexo.TabStop = false;
+            gbSexo.Text = " Sexo ";
+            // 
+            // rbtFemenino
+            // 
+            rbtFemenino.AutoSize = true;
+            rbtFemenino.Location = new Point(17, 51);
+            rbtFemenino.Name = "rbtFemenino";
+            rbtFemenino.Size = new Size(78, 19);
+            rbtFemenino.TabIndex = 0;
+            rbtFemenino.Text = "Femenino";
+            rbtFemenino.UseVisualStyleBackColor = true;
             // 
             // rbtMasculino
             // 
@@ -117,68 +149,106 @@
             rbtMasculino.Text = "Masculino";
             rbtMasculino.UseVisualStyleBackColor = true;
             // 
-            // rbtFemenino
+            // cboSecciones
             // 
-            rbtFemenino.AutoSize = true;
-            rbtFemenino.Location = new Point(17, 51);
-            rbtFemenino.Name = "rbtFemenino";
-            rbtFemenino.Size = new Size(78, 19);
-            rbtFemenino.TabIndex = 0;
-            rbtFemenino.Text = "Femenino";
-            rbtFemenino.UseVisualStyleBackColor = true;
+            cboSecciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboSecciones.FormattingEnabled = true;
+            cboSecciones.Location = new Point(103, 219);
+            cboSecciones.Name = "cboSecciones";
+            cboSecciones.Size = new Size(136, 23);
+            cboSecciones.TabIndex = 14;
             // 
-            // btnOK
+            // label3
             // 
-            btnOK.Location = new Point(66, 329);
-            btnOK.Name = "btnOK";
-            btnOK.Size = new Size(94, 69);
-            btnOK.TabIndex = 7;
-            btnOK.Text = "OK";
-            btnOK.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Location = new Point(35, 222);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 15);
+            label3.TabIndex = 13;
+            label3.Text = "Secciones:";
             // 
-            // btnCancelar
+            // dtpFechaNacimiento
             // 
-            btnCancelar.Location = new Point(618, 329);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(94, 69);
-            btnCancelar.TabIndex = 7;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            dtpFechaNacimiento.Format = DateTimePickerFormat.Short;
+            dtpFechaNacimiento.Location = new Point(643, 154);
+            dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            dtpFechaNacimiento.Size = new Size(104, 23);
+            dtpFechaNacimiento.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(519, 157);
+            label2.Name = "label2";
+            label2.Size = new Size(106, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Fecha Nacimiento:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 15);
+            label1.TabIndex = 10;
+            label1.Text = "DNI:";
+            // 
+            // mtbDni
+            // 
+            mtbDni.Location = new Point(75, 26);
+            mtbDni.Mask = "00000000";
+            mtbDni.Name = "mtbDni";
+            mtbDni.Size = new Size(53, 23);
+            mtbDni.TabIndex = 20;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // frmEmpleadosAE
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(794, 357);
+            Controls.Add(mtbDni);
+            Controls.Add(gbEmpleado);
             Controls.Add(btnCancelar);
             Controls.Add(btnOK);
-            Controls.Add(groupBox1);
+            Controls.Add(gbSexo);
             Controls.Add(cboSecciones);
             Controls.Add(label3);
             Controls.Add(dtpFechaNacimiento);
             Controls.Add(label2);
-            Controls.Add(textBox1);
             Controls.Add(label1);
             Name = "frmEmpleadosAE";
             Text = "frmEmpleadosAE";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            gbEmpleado.ResumeLayout(false);
+            gbEmpleado.PerformLayout();
+            gbSexo.ResumeLayout(false);
+            gbSexo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private TextBox textBox1;
-        private Label label2;
-        private DateTimePicker dtpFechaNacimiento;
-        private Label label3;
-        private ComboBox cboSecciones;
-        private GroupBox groupBox1;
+        private GroupBox gbEmpleado;
+        private TextBox txtApellidos;
+        private TextBox txtTercerNombre;
+        private TextBox txtSegundoNombre;
+        private TextBox txtPrimerNombre;
+        private Button btnCancelar;
+        private Button btnOK;
+        private GroupBox gbSexo;
         private RadioButton rbtFemenino;
         private RadioButton rbtMasculino;
-        private Button btnOK;
-        private Button btnCancelar;
+        private ComboBox cboSecciones;
+        private Label label3;
+        private DateTimePicker dtpFechaNacimiento;
+        private Label label2;
+        private Label label1;
+        private MaskedTextBox mtbDni;
+        private ErrorProvider errorProvider1;
     }
 }

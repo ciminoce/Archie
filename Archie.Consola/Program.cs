@@ -64,6 +64,10 @@ namespace Archie.Consola
             }
             while (userSelection != "9");
             Console.WriteLine("Gracias por usar la aplicación");
+            if (Nomina.GetHayCambios())
+            {
+                nomina.GuardarDatosArchivo();
+            }
         }
 
     }

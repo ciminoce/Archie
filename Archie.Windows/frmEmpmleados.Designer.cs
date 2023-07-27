@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpmleados));
             toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            tsbNuevo = new ToolStripButton();
+            tsbBorrar = new ToolStripButton();
+            tsbEditar = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            toolStripButton4 = new ToolStripButton();
-            toolStripButton5 = new ToolStripButton();
+            tsbFiltrar = new ToolStripDropDownButton();
+            secciónToolStripMenuItem = new ToolStripMenuItem();
+            tscboSecciones = new ToolStripComboBox();
+            sexoToolStripMenuItem = new ToolStripMenuItem();
+            masculinoToolStripMenuItem = new ToolStripMenuItem();
+            femeninoToolStripMenuItem = new ToolStripMenuItem();
+            tsbActualizar = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            toolStripButton6 = new ToolStripButton();
+            tsbSalir = new ToolStripButton();
             panelInferior = new Panel();
             panelGrid = new Panel();
             dgvDatos = new DataGridView();
@@ -54,77 +58,122 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3, toolStripSeparator1, toolStripButton4, toolStripButton5, toolStripSeparator2, toolStripButton6 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tsbNuevo, tsbBorrar, tsbEditar, toolStripSeparator1, tsbFiltrar, tsbActualizar, toolStripSeparator2, tsbSalir });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 38);
+            toolStrip1.Size = new Size(800, 58);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // tsbNuevo
             // 
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(46, 35);
-            toolStripButton1.Text = "Nuevo";
-            toolStripButton1.TextImageRelation = TextImageRelation.ImageAboveText;
-            toolStripButton1.Click += toolStripButton1_Click;
+            tsbNuevo.Image = Properties.Resources.file_36px;
+            tsbNuevo.ImageScaling = ToolStripItemImageScaling.None;
+            tsbNuevo.ImageTransparentColor = Color.Magenta;
+            tsbNuevo.Name = "tsbNuevo";
+            tsbNuevo.Size = new Size(46, 55);
+            tsbNuevo.Text = "Nuevo";
+            tsbNuevo.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbNuevo.Click += tsbNuevo_Click;
             // 
-            // toolStripButton2
+            // tsbBorrar
             // 
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(43, 35);
-            toolStripButton2.Text = "Borrar";
-            toolStripButton2.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbBorrar.Image = Properties.Resources.delete_file_36px;
+            tsbBorrar.ImageScaling = ToolStripItemImageScaling.None;
+            tsbBorrar.ImageTransparentColor = Color.Magenta;
+            tsbBorrar.Name = "tsbBorrar";
+            tsbBorrar.Size = new Size(43, 55);
+            tsbBorrar.Text = "Borrar";
+            tsbBorrar.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbBorrar.Click += tsbBorrar_Click;
             // 
-            // toolStripButton3
+            // tsbEditar
             // 
-            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(41, 35);
-            toolStripButton3.Text = "Editar";
-            toolStripButton3.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbEditar.Image = Properties.Resources.edit_file_36px;
+            tsbEditar.ImageScaling = ToolStripItemImageScaling.None;
+            tsbEditar.ImageTransparentColor = Color.Magenta;
+            tsbEditar.Name = "tsbEditar";
+            tsbEditar.Size = new Size(41, 55);
+            tsbEditar.Text = "Editar";
+            tsbEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 38);
+            toolStripSeparator1.Size = new Size(6, 58);
             // 
-            // toolStripButton4
+            // tsbFiltrar
             // 
-            toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
-            toolStripButton4.ImageTransparentColor = Color.Magenta;
-            toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(41, 35);
-            toolStripButton4.Text = "Filtrar";
-            toolStripButton4.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbFiltrar.DropDownItems.AddRange(new ToolStripItem[] { secciónToolStripMenuItem, sexoToolStripMenuItem });
+            tsbFiltrar.Image = Properties.Resources.filled_filter_36px;
+            tsbFiltrar.ImageScaling = ToolStripItemImageScaling.None;
+            tsbFiltrar.ImageTransparentColor = Color.Magenta;
+            tsbFiltrar.Name = "tsbFiltrar";
+            tsbFiltrar.Size = new Size(50, 55);
+            tsbFiltrar.Text = "Filtrar";
+            tsbFiltrar.TextImageRelation = TextImageRelation.ImageAboveText;
             // 
-            // toolStripButton5
+            // secciónToolStripMenuItem
             // 
-            toolStripButton5.Image = (Image)resources.GetObject("toolStripButton5.Image");
-            toolStripButton5.ImageTransparentColor = Color.Magenta;
-            toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(63, 35);
-            toolStripButton5.Text = "Actualizar";
-            toolStripButton5.TextImageRelation = TextImageRelation.ImageAboveText;
+            secciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tscboSecciones });
+            secciónToolStripMenuItem.Name = "secciónToolStripMenuItem";
+            secciónToolStripMenuItem.Size = new Size(115, 22);
+            secciónToolStripMenuItem.Text = "Sección";
+            // 
+            // tscboSecciones
+            // 
+            tscboSecciones.DropDownStyle = ComboBoxStyle.DropDownList;
+            tscboSecciones.Name = "tscboSecciones";
+            tscboSecciones.Size = new Size(121, 23);
+            tscboSecciones.SelectedIndexChanged += tscboSecciones_SelectedIndexChanged;
+            // 
+            // sexoToolStripMenuItem
+            // 
+            sexoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { masculinoToolStripMenuItem, femeninoToolStripMenuItem });
+            sexoToolStripMenuItem.Name = "sexoToolStripMenuItem";
+            sexoToolStripMenuItem.Size = new Size(115, 22);
+            sexoToolStripMenuItem.Text = "Sexo";
+            // 
+            // masculinoToolStripMenuItem
+            // 
+            masculinoToolStripMenuItem.Name = "masculinoToolStripMenuItem";
+            masculinoToolStripMenuItem.Size = new Size(129, 22);
+            masculinoToolStripMenuItem.Text = "Masculino";
+            masculinoToolStripMenuItem.Click += masculinoToolStripMenuItem_Click;
+            // 
+            // femeninoToolStripMenuItem
+            // 
+            femeninoToolStripMenuItem.Name = "femeninoToolStripMenuItem";
+            femeninoToolStripMenuItem.Size = new Size(129, 22);
+            femeninoToolStripMenuItem.Text = "Femenino";
+            femeninoToolStripMenuItem.Click += femeninoToolStripMenuItem_Click;
+            // 
+            // tsbActualizar
+            // 
+            tsbActualizar.Image = Properties.Resources.restart_36px;
+            tsbActualizar.ImageScaling = ToolStripItemImageScaling.None;
+            tsbActualizar.ImageTransparentColor = Color.Magenta;
+            tsbActualizar.Name = "tsbActualizar";
+            tsbActualizar.Size = new Size(63, 55);
+            tsbActualizar.Text = "Actualizar";
+            tsbActualizar.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbActualizar.Click += tsbActualizar_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 38);
+            toolStripSeparator2.Size = new Size(6, 58);
             // 
-            // toolStripButton6
+            // tsbSalir
             // 
-            toolStripButton6.Image = (Image)resources.GetObject("toolStripButton6.Image");
-            toolStripButton6.ImageTransparentColor = Color.Magenta;
-            toolStripButton6.Name = "toolStripButton6";
-            toolStripButton6.Size = new Size(33, 35);
-            toolStripButton6.Text = "Salir";
-            toolStripButton6.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbSalir.Image = Properties.Resources.exit_36px;
+            tsbSalir.ImageScaling = ToolStripItemImageScaling.None;
+            tsbSalir.ImageTransparentColor = Color.Magenta;
+            tsbSalir.Name = "tsbSalir";
+            tsbSalir.Size = new Size(40, 55);
+            tsbSalir.Text = "Salir";
+            tsbSalir.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbSalir.Click += tsbSalir_Click;
             // 
             // panelInferior
             // 
@@ -138,9 +187,9 @@
             // 
             panelGrid.Controls.Add(dgvDatos);
             panelGrid.Dock = DockStyle.Fill;
-            panelGrid.Location = new Point(0, 38);
+            panelGrid.Location = new Point(0, 58);
             panelGrid.Name = "panelGrid";
-            panelGrid.Size = new Size(800, 312);
+            panelGrid.Size = new Size(800, 292);
             panelGrid.TabIndex = 2;
             // 
             // dgvDatos
@@ -154,7 +203,7 @@
             dgvDatos.Name = "dgvDatos";
             dgvDatos.ReadOnly = true;
             dgvDatos.RowTemplate.Height = 25;
-            dgvDatos.Size = new Size(800, 312);
+            dgvDatos.Size = new Size(800, 292);
             dgvDatos.TabIndex = 0;
             // 
             // colDni
@@ -209,7 +258,7 @@
             Controls.Add(panelInferior);
             Controls.Add(toolStrip1);
             Name = "frmEmpmleados";
-            Text = "Form1";
+            Text = "Lista de Empleados";
             Load += frmEmpmleados_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
@@ -222,14 +271,13 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton tsbNuevo;
+        private ToolStripButton tsbBorrar;
+        private ToolStripButton tsbEditar;
         private ToolStripSeparator toolStripSeparator1;
-        private ToolStripButton toolStripButton4;
-        private ToolStripButton toolStripButton5;
+        private ToolStripButton tsbActualizar;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton toolStripButton6;
+        private ToolStripButton tsbSalir;
         private Panel panelInferior;
         private Panel panelGrid;
         private DataGridView dgvDatos;
@@ -239,5 +287,11 @@
         private DataGridViewTextBoxColumn colEdad;
         private DataGridViewTextBoxColumn colSeccion;
         private DataGridViewTextBoxColumn colSexo;
+        private ToolStripDropDownButton tsbFiltrar;
+        private ToolStripMenuItem secciónToolStripMenuItem;
+        private ToolStripComboBox tscboSecciones;
+        private ToolStripMenuItem sexoToolStripMenuItem;
+        private ToolStripMenuItem masculinoToolStripMenuItem;
+        private ToolStripMenuItem femeninoToolStripMenuItem;
     }
 }
