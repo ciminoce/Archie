@@ -92,19 +92,19 @@ namespace Archie.Consola
             }
         }
 
-        public static void GuardarEmpleados(Nomina nomina)
-        {
-            if (nomina.GetCantidad() == 0)
-            {
-                Console.WriteLine("No hay empleados todavía");
-                Console.ReadLine();
-                return;
-            }
-            int contadorRegistros = nomina.GuardarDatosArchivo();
-            Console.WriteLine("Registros guardados!!!");
-            Console.WriteLine($"Se guardaron {contadorRegistros} registro/s");
-            Console.ReadLine();
-        }
+        //public static void GuardarEmpleados(Nomina nomina)
+        //{
+        //    if (nomina.GetCantidad() == 0)
+        //    {
+        //        Console.WriteLine("No hay empleados todavía");
+        //        Console.ReadLine();
+        //        return;
+        //    }
+        //    int contadorRegistros = nomina.GuardarDatosArchivo();
+        //    Console.WriteLine("Registros guardados!!!");
+        //    Console.WriteLine($"Se guardaron {contadorRegistros} registro/s");
+        //    Console.ReadLine();
+        //}
 
         public static void MostrarListaEmpleados(Nomina nomina)
         {

@@ -19,6 +19,7 @@ namespace Archie.Windows.Helpers
             r.Cells[3].Value = empleado.Edad;
             r.Cells[4].Value = empleado.Seccion;
             r.Cells[5].Value = empleado.Sexo;
+            r.Cells[6].Value = empleado.Activo;
 
             r.Tag = empleado;//lo guardo para trabajarlo luego en el form si quiero editar
 
@@ -27,6 +28,11 @@ namespace Archie.Windows.Helpers
         public static void AgregarFila(DataGridView grilla, DataGridViewRow r)
         {
             grilla.Rows.Add(r);
+        }
+
+        public static void QuitarFila(DataGridView grilla, DataGridViewRow r)
+        {
+            grilla.Rows.Remove(r);
         }
     }
 }

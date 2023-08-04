@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             toolStrip1 = new ToolStrip();
             tsbNuevo = new ToolStripButton();
             tsbBorrar = new ToolStripButton();
@@ -41,6 +42,8 @@
             femeninoToolStripMenuItem = new ToolStripMenuItem();
             tsbActualizar = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
+            tsbActivos = new ToolStripButton();
+            toolStripSeparator3 = new ToolStripSeparator();
             tsbSalir = new ToolStripButton();
             panelInferior = new Panel();
             panelGrid = new Panel();
@@ -51,14 +54,19 @@
             colEdad = new DataGridViewTextBoxColumn();
             colSeccion = new DataGridViewTextBoxColumn();
             colSexo = new DataGridViewTextBoxColumn();
+            colActivo = new DataGridViewCheckBoxColumn();
+            contxtMenu = new ContextMenuStrip(components);
+            restaurarToolStripMenuItem = new ToolStripMenuItem();
+            borrarToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1.SuspendLayout();
             panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatos).BeginInit();
+            contxtMenu.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { tsbNuevo, tsbBorrar, tsbEditar, toolStripSeparator1, tsbFiltrar, tsbActualizar, toolStripSeparator2, tsbSalir });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { tsbNuevo, tsbBorrar, tsbEditar, toolStripSeparator1, tsbFiltrar, tsbActualizar, toolStripSeparator2, tsbActivos, toolStripSeparator3, tsbSalir });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 58);
@@ -96,6 +104,7 @@
             tsbEditar.Size = new Size(41, 55);
             tsbEditar.Text = "Editar";
             tsbEditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbEditar.Click += tsbEditar_Click;
             // 
             // toolStripSeparator1
             // 
@@ -164,6 +173,22 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 58);
             // 
+            // tsbActivos
+            // 
+            tsbActivos.Image = Properties.Resources.checked_checkbox_36px;
+            tsbActivos.ImageScaling = ToolStripItemImageScaling.None;
+            tsbActivos.ImageTransparentColor = Color.Magenta;
+            tsbActivos.Name = "tsbActivos";
+            tsbActivos.Size = new Size(50, 55);
+            tsbActivos.Text = "Activos";
+            tsbActivos.TextImageRelation = TextImageRelation.ImageAboveText;
+            tsbActivos.Click += tsbActivos_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 58);
+            // 
             // tsbSalir
             // 
             tsbSalir.Image = Properties.Resources.exit_36px;
@@ -197,12 +222,15 @@
             dgvDatos.AllowUserToAddRows = false;
             dgvDatos.AllowUserToDeleteRows = false;
             dgvDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDatos.Columns.AddRange(new DataGridViewColumn[] { colDni, colEmpleado, colFecha, colEdad, colSeccion, colSexo });
+            dgvDatos.Columns.AddRange(new DataGridViewColumn[] { colDni, colEmpleado, colFecha, colEdad, colSeccion, colSexo, colActivo });
+            dgvDatos.ContextMenuStrip = contxtMenu;
             dgvDatos.Dock = DockStyle.Fill;
             dgvDatos.Location = new Point(0, 0);
+            dgvDatos.MultiSelect = false;
             dgvDatos.Name = "dgvDatos";
             dgvDatos.ReadOnly = true;
             dgvDatos.RowTemplate.Height = 25;
+            dgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDatos.Size = new Size(800, 292);
             dgvDatos.TabIndex = 0;
             // 
@@ -249,6 +277,34 @@
             colSexo.Name = "colSexo";
             colSexo.ReadOnly = true;
             // 
+            // colActivo
+            // 
+            colActivo.HeaderText = "Activo";
+            colActivo.Name = "colActivo";
+            colActivo.ReadOnly = true;
+            // 
+            // contxtMenu
+            // 
+            contxtMenu.Items.AddRange(new ToolStripItem[] { restaurarToolStripMenuItem, borrarToolStripMenuItem });
+            contxtMenu.Name = "contxtMenu";
+            contxtMenu.Size = new Size(124, 48);
+            // 
+            // restaurarToolStripMenuItem
+            // 
+            restaurarToolStripMenuItem.Image = Properties.Resources.restart_36px;
+            restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
+            restaurarToolStripMenuItem.Size = new Size(123, 22);
+            restaurarToolStripMenuItem.Text = "Restaurar";
+            restaurarToolStripMenuItem.Click += restaurarToolStripMenuItem_Click;
+            // 
+            // borrarToolStripMenuItem
+            // 
+            borrarToolStripMenuItem.Image = Properties.Resources.delete_file_36px;
+            borrarToolStripMenuItem.Name = "borrarToolStripMenuItem";
+            borrarToolStripMenuItem.Size = new Size(123, 22);
+            borrarToolStripMenuItem.Text = "Borrar";
+            borrarToolStripMenuItem.Click += borrarToolStripMenuItem_Click;
+            // 
             // frmEmpmleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -264,6 +320,7 @@
             toolStrip1.PerformLayout();
             panelGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDatos).EndInit();
+            contxtMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -293,5 +350,11 @@
         private ToolStripMenuItem sexoToolStripMenuItem;
         private ToolStripMenuItem masculinoToolStripMenuItem;
         private ToolStripMenuItem femeninoToolStripMenuItem;
+        private DataGridViewCheckBoxColumn colActivo;
+        private ToolStripButton tsbActivos;
+        private ToolStripSeparator toolStripSeparator3;
+        private ContextMenuStrip contxtMenu;
+        private ToolStripMenuItem restaurarToolStripMenuItem;
+        private ToolStripMenuItem borrarToolStripMenuItem;
     }
 }

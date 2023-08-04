@@ -1,6 +1,7 @@
 using Archie.Datos;
 using Archie.Entidades;
 using Archie.Windows.Helpers;
+using Archie.Windows.Properties;
 
 namespace Archie.Windows
 {
@@ -14,11 +15,12 @@ namespace Archie.Windows
         private List<Empleado> listaEmpleados;
         private void frmEmpmleados_Load(object sender, EventArgs e)
         {
+            //TODO: Modificar la grilla
             CargarComboSecciones();
             nomina = new Nomina();
             if (nomina.GetCantidad() > 0)
             {
-                listaEmpleados = nomina.GetEmpleados();
+                listaEmpleados = nomina.GetEmpleados(true);
                 MostrarDatosEnGrilla();
             }
         }
@@ -50,19 +52,9 @@ namespace Archie.Windows
         private void tsbSalir_Click(object sender, EventArgs e)
         {
 
-            if (Nomina.GetHayCambios())
-            {
-                int registros = nomina.GuardarDatosArchivo();
-                MessageBox.Show($"Se guardaron {registros} registros"
-                    + Environment.NewLine + "Fin del Programa",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Fin del Programa",
-                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Fin del Programa",
+                "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
             Application.Exit();
         }
 
@@ -82,6 +74,7 @@ namespace Archie.Windows
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
                 GridHelper.SetearFila(r, empleadoNuevo);
                 GridHelper.AgregarFila(dgvDatos, r);
+
             }
             else
             {
@@ -132,6 +125,125 @@ namespace Archie.Windows
         {
             //TODO: Considerar baja lógica y física
             //TODO: Considerar recupero de datos borrados lógicos.
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            DataGridViewRow r = dgvDatos.SelectedRows[0];
+            Empleado empleadoSeleccionado = (Empleado)r.Tag;
+            DialogResult dr = MessageBox.Show($"¿Desea borrar a" +
+                $" {Empleado.MostrarDatos(empleadoSeleccionado)}?",
+                "Confirmar Baja",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+            empleadoSeleccionado.Activo = false;
+            if (nomina - empleadoSeleccionado)
+            {
+                //GridHelper.QuitarFila(dgvDatos, r);
+                GridHelper.SetearFila(r, empleadoSeleccionado);
+                MessageBox.Show("Registro eliminado!!!", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Empleado no encontrado", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            DataGridViewRow r = dgvDatos.SelectedRows[0];
+            Empleado empleadoSeleccionado = (Empleado)r.Tag;
+            frmEmpleadosAE frm = new frmEmpleadosAE() { Text = "Editar Empleado" };
+            frm.SetEmpleado(empleadoSeleccionado);
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+            empleadoSeleccionado = frm.GetEmpleado();
+            if (Nomina.Editar(nomina, empleadoSeleccionado))
+            {
+                GridHelper.SetearFila(r, empleadoSeleccionado);
+                MessageBox.Show("Registro editado!!!", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Empleado no encontrado", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tsbActivos_Click(object sender, EventArgs e)
+        {
+            if (tsbActivos.Text == "Activos")
+            {
+                tsbActivos.Text = "Inactivos";
+                tsbActivos.Image = Resources.unchecked_checkbox_36px;
+                listaEmpleados = nomina.GetEmpleados(false);
+            }
+            else
+            {
+                tsbActivos.Text = "Activos";
+                tsbActivos.Image = Resources.checked_checkbox_36px;
+                listaEmpleados = nomina.GetEmpleados(true);
+            }
+            MostrarDatosEnGrilla();
+        }
+
+        private void restaurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            DataGridViewRow r = dgvDatos.SelectedRows[0];
+            Empleado empleadoSeleccionado = (Empleado)r.Tag;
+            if (empleadoSeleccionado.Activo)
+            {
+               
+                empleadoSeleccionado.Activo = false;
+                if(nomina - empleadoSeleccionado)
+                {
+
+                }
+            }
+        }
+
+        private void borrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            DataGridViewRow r = dgvDatos.SelectedRows[0];
+            Empleado empleadoSeleccionado = (Empleado)r.Tag;
+            //if (empleadoSeleccionado.Activo)
+            //{
+            //    empleadoSeleccionado.Activo = false;
+
+            //}
+            if (nomina - empleadoSeleccionado)
+            {
+                GridHelper.SetearFila(r, empleadoSeleccionado);
+                MessageBox.Show("Registro eliminado!!!", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            nomina.ActualizarLista();
+            listaEmpleados = nomina.GetEmpleados(true);
+
         }
     }
 }

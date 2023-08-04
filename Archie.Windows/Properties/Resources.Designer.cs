@@ -63,6 +63,26 @@ namespace Archie.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap checked_checkbox_36px {
+            get {
+                object obj = ResourceManager.GetObject("checked_checkbox_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checklist_36px {
+            get {
+                object obj = ResourceManager.GetObject("checklist_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_file_36px {
             get {
                 object obj = ResourceManager.GetObject("delete_file_36px", resourceCulture);
@@ -116,6 +136,16 @@ namespace Archie.Windows.Properties {
         internal static System.Drawing.Bitmap restart_36px {
             get {
                 object obj = ResourceManager.GetObject("restart_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unchecked_checkbox_36px {
+            get {
+                object obj = ResourceManager.GetObject("unchecked_checkbox_36px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -5,18 +5,20 @@ namespace Archie.Datos
     public class Nomina
     {
         private List<Empleado> _listaEmpleados;
-        private static bool hayCambios;
 
-        public static bool GetHayCambios() => hayCambios;
-        static Nomina()
-        {
-            hayCambios = false;
-        }
         public Nomina()
         {
             _listaEmpleados = ManejadorArchivo.LeerArchivo();
         }
+        public void ActualizarLista()
+        {
+            _listaEmpleados.Clear();
+            _listaEmpleados = ManejadorArchivo.LeerArchivo();
+        }
+        public List<Empleado> GetEmpleados(bool estado) => _listaEmpleados
+            .Where(e=>e.Activo==estado).ToList();
         public List<Empleado> GetEmpleados() => _listaEmpleados;
+
         public int GetCantidad() => _listaEmpleados.Count;
 
         public Empleado GetEmpleadoPorDni(int dniBuscado)
@@ -24,9 +26,19 @@ namespace Archie.Datos
             return _listaEmpleados.SingleOrDefault(e => e.DNI == dniBuscado);
         }
 
-        public int GuardarDatosArchivo()
+        //public int GuardarDatosArchivo()
+        //{
+        //    return ManejadorArchivo.GuardarEnArchivo(GetEmpleados());
+        //}
+
+        public static bool Editar(Nomina nomina, Empleado empleadoEditado)
         {
-            return ManejadorArchivo.GuardarEnArchivo(GetEmpleados());
+            if (nomina==empleadoEditado)
+            {
+                ManejadorArchivo.Editar(empleadoEditado);
+                return true;
+            }
+            return false;//emp no existe!!!
         }
 
         public static bool operator ==(Nomina nomina, Empleado empleado)
@@ -50,7 +62,28 @@ namespace Archie.Datos
             if (nomina != empleado)
             {
                 nomina._listaEmpleados.Add(empleado);
-                Nomina.hayCambios = true;
+                ManejadorArchivo.Agregar(empleado);
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator-(Nomina nomina, Empleado empleado)
+        {
+            if (nomina==empleado)
+            {
+                nomina._listaEmpleados.Remove(empleado);
+                if (empleado.Activo)
+                {
+                    empleado.Activo = false;
+                    ManejadorArchivo.BorradoLogico(empleado);
+                }
+                else
+                {
+                    ManejadorArchivo.Borrar(empleado);
+
+                }
+                
                 return true;
             }
             return false;

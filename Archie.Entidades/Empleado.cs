@@ -13,7 +13,9 @@ namespace Archie.Entidades
         public DateTime FechaNacimiento { get; set; }
         public Seccion Seccion { get; set; }
         public Sexo Sexo { get; set; }
-        //public int Edad { get; private set; }
+
+        public bool Activo { get; set; } = true;
+
         public int Edad { get { return SetEdad(); } }
         #region Constructores
         public Empleado(int dni, string primerNombre, string apellidos,
@@ -72,7 +74,12 @@ namespace Archie.Entidades
 
         public static bool operator==(Empleado a, Empleado b)
         {
-            return a.DNI == b.DNI;
+            if(a is not null && b is not null)
+            {
+                return a.DNI == b.DNI;
+
+            }
+            return false;
         }
         public static bool operator!=(Empleado a, Empleado b)
         {

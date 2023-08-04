@@ -60,7 +60,7 @@
             gbEmpleado.Location = new Point(32, 55);
             gbEmpleado.Name = "gbEmpleado";
             gbEmpleado.Size = new Size(464, 150);
-            gbEmpleado.TabIndex = 19;
+            gbEmpleado.TabIndex = 1;
             gbEmpleado.TabStop = false;
             gbEmpleado.Text = " Nombres y Apellido";
             // 
@@ -70,7 +70,7 @@
             txtApellidos.Name = "txtApellidos";
             txtApellidos.PlaceholderText = "Ingrese los apellidos";
             txtApellidos.Size = new Size(428, 23);
-            txtApellidos.TabIndex = 0;
+            txtApellidos.TabIndex = 3;
             // 
             // txtTercerNombre
             // 
@@ -78,7 +78,7 @@
             txtTercerNombre.Name = "txtTercerNombre";
             txtTercerNombre.PlaceholderText = "Ingrese el tercer  nombre";
             txtTercerNombre.Size = new Size(428, 23);
-            txtTercerNombre.TabIndex = 0;
+            txtTercerNombre.TabIndex = 2;
             // 
             // txtSegundoNombre
             // 
@@ -86,7 +86,7 @@
             txtSegundoNombre.Name = "txtSegundoNombre";
             txtSegundoNombre.PlaceholderText = "Ingrese el segundo  nombre";
             txtSegundoNombre.Size = new Size(428, 23);
-            txtSegundoNombre.TabIndex = 0;
+            txtSegundoNombre.TabIndex = 1;
             // 
             // txtPrimerNombre
             // 
@@ -101,7 +101,7 @@
             btnCancelar.Location = new Point(605, 261);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 69);
-            btnCancelar.TabIndex = 16;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -111,7 +111,7 @@
             btnOK.Location = new Point(53, 261);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(94, 69);
-            btnOK.TabIndex = 17;
+            btnOK.TabIndex = 5;
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
@@ -123,7 +123,7 @@
             gbSexo.Location = new Point(519, 55);
             gbSexo.Name = "gbSexo";
             gbSexo.Size = new Size(228, 84);
-            gbSexo.TabIndex = 15;
+            gbSexo.TabIndex = 2;
             gbSexo.TabStop = false;
             gbSexo.Text = " Sexo ";
             // 
@@ -133,7 +133,7 @@
             rbtFemenino.Location = new Point(17, 51);
             rbtFemenino.Name = "rbtFemenino";
             rbtFemenino.Size = new Size(78, 19);
-            rbtFemenino.TabIndex = 0;
+            rbtFemenino.TabIndex = 1;
             rbtFemenino.Text = "Femenino";
             rbtFemenino.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +156,7 @@
             cboSecciones.Location = new Point(103, 219);
             cboSecciones.Name = "cboSecciones";
             cboSecciones.Size = new Size(136, 23);
-            cboSecciones.TabIndex = 14;
+            cboSecciones.TabIndex = 4;
             // 
             // label3
             // 
@@ -173,7 +173,7 @@
             dtpFechaNacimiento.Location = new Point(643, 154);
             dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             dtpFechaNacimiento.Size = new Size(104, 23);
-            dtpFechaNacimiento.TabIndex = 12;
+            dtpFechaNacimiento.TabIndex = 3;
             // 
             // label2
             // 
@@ -199,7 +199,7 @@
             mtbDni.Mask = "00000000";
             mtbDni.Name = "mtbDni";
             mtbDni.Size = new Size(53, 23);
-            mtbDni.TabIndex = 20;
+            mtbDni.TabIndex = 0;
             // 
             // errorProvider1
             // 

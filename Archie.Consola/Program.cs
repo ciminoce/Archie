@@ -48,7 +48,7 @@ namespace Archie.Consola
                         Utilidades.MostrarListaEmpleados(nomina);
                         break;
                     case "4":
-                        Utilidades.GuardarEmpleados(nomina);
+                        //Utilidades.GuardarEmpleados(nomina);
                         break;
                     case "5":
                         Utilidades.CargarDatosEmpleado(nomina);
@@ -64,10 +64,6 @@ namespace Archie.Consola
             }
             while (userSelection != "9");
             Console.WriteLine("Gracias por usar la aplicación");
-            if (Nomina.GetHayCambios())
-            {
-                nomina.GuardarDatosArchivo();
-            }
         }
 
     }
