@@ -13,6 +13,7 @@ namespace Archie.Windows
             InitializeComponent();
         }
         private List<Empleado> listaEmpleados;
+        private  bool  activos = true;
         private void frmEmpmleados_Load(object sender, EventArgs e)
         {
             //TODO: Modificar la grilla
@@ -20,7 +21,7 @@ namespace Archie.Windows
             nomina = new Nomina();
             if (nomina.GetCantidad() > 0)
             {
-                listaEmpleados = nomina.GetEmpleados(true);
+                listaEmpleados = nomina.GetEmpleados(activos);
                 MostrarDatosEnGrilla();
             }
         }
@@ -190,15 +191,17 @@ namespace Archie.Windows
         {
             if (tsbActivos.Text == "Activos")
             {
+                activos = false;
                 tsbActivos.Text = "Inactivos";
                 tsbActivos.Image = Resources.unchecked_checkbox_36px;
-                listaEmpleados = nomina.GetEmpleados(false);
+                listaEmpleados = nomina.GetEmpleados(activos);
             }
             else
             {
+                activos = true;
                 tsbActivos.Text = "Activos";
                 tsbActivos.Image = Resources.checked_checkbox_36px;
-                listaEmpleados = nomina.GetEmpleados(true);
+                listaEmpleados = nomina.GetEmpleados(activos);
             }
             MostrarDatosEnGrilla();
         }
@@ -213,12 +216,16 @@ namespace Archie.Windows
             Empleado empleadoSeleccionado = (Empleado)r.Tag;
             if (empleadoSeleccionado.Activo)
             {
-               
-                empleadoSeleccionado.Activo = false;
-                if(nomina - empleadoSeleccionado)
-                {
+                return;
 
-                }
+            }
+            else
+            {
+                empleadoSeleccionado.Activo = true;
+                Nomina.Editar(nomina, empleadoSeleccionado);
+                nomina.ActualizarLista();
+                listaEmpleados = nomina.GetEmpleados(activos);
+                MostrarDatosEnGrilla();
             }
         }
 
@@ -230,11 +237,6 @@ namespace Archie.Windows
             }
             DataGridViewRow r = dgvDatos.SelectedRows[0];
             Empleado empleadoSeleccionado = (Empleado)r.Tag;
-            //if (empleadoSeleccionado.Activo)
-            //{
-            //    empleadoSeleccionado.Activo = false;
-
-            //}
             if (nomina - empleadoSeleccionado)
             {
                 GridHelper.SetearFila(r, empleadoSeleccionado);
@@ -242,8 +244,8 @@ namespace Archie.Windows
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             nomina.ActualizarLista();
-            listaEmpleados = nomina.GetEmpleados(true);
-
+            listaEmpleados = nomina.GetEmpleados(activos);
+            MostrarDatosEnGrilla();
         }
     }
 }
